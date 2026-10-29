@@ -38,25 +38,6 @@ requirements.txt
 8. safetensors
 """
 
-
-from google.colab import drive
-import shutil
-
-drive.mount('/content/drive')
-
-shutil.copy(
-    '/content/drive/MyDrive/best_echovqa_model_fold1.pt',
-    '/content/best_echovqa_model_fold1.pt'
-)
-
-import os
-
-print(
-    os.path.exists(
-        "best_echovqa_model_fold1.pt"
-    )
-)
-
 import os
 import tempfile
 import torch
