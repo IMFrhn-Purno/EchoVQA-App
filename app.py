@@ -38,7 +38,6 @@ requirements.txt
 8. safetensors
 """
 
-!pip install streamlit
 
 from google.colab import drive
 import shutil
