@@ -1,0 +1,8 @@
+streamlit
+torch
+torchvision
+transformers
+numpy
+opencv-python-headless
+sentencepiece
+safetensors
