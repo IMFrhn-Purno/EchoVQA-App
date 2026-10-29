@@ -47,6 +47,7 @@ import numpy as np
 import streamlit as st
 from torchvision.models.video import r2plus1d_18
 from transformers import AutoTokenizer, AutoModel
+from huggingface_hub import hf_hub_download
 
 # ==================================================
 # PAGE CONFIG
@@ -184,7 +185,8 @@ def initialise_system():
         output_heads=output_heads
     ).to(device)
 
-    checkpoint_path = "best_echovqa_model_fold1.pt"
+    checkpoint_path = hf_hub_download(repo_id="IMFrhn-Purno/EchoVQA-App",
+                                      filename="best_echovqa_model_fold1.pt")
     if os.path.exists(checkpoint_path):
         checkpoint = torch.load(checkpoint_path, map_location=device)
         state_dict = checkpoint['state_dict'] if isinstance(checkpoint, dict) and 'state_dict' in checkpoint else checkpoint
