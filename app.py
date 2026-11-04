@@ -254,13 +254,6 @@ st.title("❤️ EchoVQA Decision Support System")
 st.markdown(
     """
     Upload an echocardiography video and ask a clinical question.
-
-    The system combines:
-
-    - Echocardiogram video analysis
-    - ClinicalBERT text understanding
-    - Multimodal fusion reasoning
-    - Multi-task prediction
     """
 )
 
