@@ -397,33 +397,27 @@ if run_prediction:
 
         st.success("Inference completed.")
         st.markdown("---")
-        st.subheader("📊 Results")
+        st.subheader("Results")
 
-        col_a, col_b, col_c = st.columns(3)
-        with col_a:
-            st.metric(label="Predicted View", value=results["view"])
-        with col_b:
-            st.metric(label="Question Type", value=results["question_type"])
-        with col_c:
-            st.metric(label="Confidence", value=f"{results['confidence']:.2f}%")
-
+        st.metric(
+            label="Question Type",
+            value=results["question_type"]
+        )   
 
         st.markdown("---")
-        result_col1, result_col2 = st.columns(2)
-        with result_col1:
-            st.markdown("### Binary Prediction")
-            st.info(results["binary_answer"])
-            st.markdown("### Ordinal Severity")
-            st.info(results["ordinal_answer"])
-        with result_col2:
-            st.markdown("### Regression Output")
-            st.info(f"{results['regression_value']:.2f}%")
-            st.markdown("### View Class")
-            st.info(results["view"])
 
-        with st.expander("Show Detailed Outputs"):
-            st.json(results)
+        if results["question_type"] == "Binary (Yes / No)":
+            answer = results["binary_answer"]
 
+        elif results["question_type"] == "Ordinal Severity":
+            answer = results["ordinal_answer"]
+
+        else:
+            answer = f"{results['regression_value']:.2f}%"
+
+        st.markdown("### Answer")
+        st.success(answer)
+   
     except Exception as e:
         st.error(f"Inference failed: {str(e)}")
     finally:
