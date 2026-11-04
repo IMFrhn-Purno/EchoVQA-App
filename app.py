@@ -303,7 +303,7 @@ with col2:
 
 st.markdown("---")
 run_prediction = st.button(
-    "🚀 Run Prediction",
+    "Run Prediction",
     use_container_width=True
 )
 
